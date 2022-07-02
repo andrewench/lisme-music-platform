@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500&display=swap')
 *, *::before, *::after
 	margin: 0
 	padding: 0
 	box-sizing: border-box
+	font-family: 'Barlow', sans-serif
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section
 	display: block
@@ -18,5 +20,103 @@ q:before, q:after
 table
 	border-collapse: collapse
 	border-spacing: 0
-html, body
+html, body, .App
 	min-height: 100vh
+body
+	background: linear-gradient(134.16deg, #151515 9.74%, #15101D 86.75%)
+
+// Variables
+$lsm__btn-accent-clr: #232029
+
+.fl
+	display: flex
+
+.fl-col
+	flex-direction: column
+
+.fl-row-cntr
+	align-items: center
+
+.fl-col-cntr
+	justify-content: center
+
+.fl-jstf-between
+	justify-content: space-between
+
+.App-Link
+	text-decoration: none
+
+.App-Img
+	pointer-events: none
+
+.App-Btn
+	border: none
+
+	&:hover
+		cursor: pointer
+
+.App-SprLine
+	margin-right: 40px
+	width: 1px
+	height: 18px
+	background-color: #c4c4c4
+
+// Header Section
+.App-Header
+	padding: 0 100px
+	width: 100%
+	min-height: 100px
+	height: 100px
+	// backdrop-filter: blur(10px)
+	// background-color: #3b3b3b50
+
+.Header-Link
+	font-size: 1.2rem
+	letter-spacing: 0.02em
+	text-shadow: 0 1px 2px rgba(0,0,0,.45)
+	color: #fff
+
+.Header-Links > .Header-Link:not(:last-child)
+	margin-right: 40px
+
+.Header-MenuList
+	background-color: transparent
+
+	& > ion-icon
+		margin-top: 4px
+
+	&:hover
+		cursor: pointer
+
+.MenuList-Label
+	margin-right: 4px
+
+.User-AvatarBox
+	margin-right: 14px
+
+.User-Avatar
+	border-radius: 50%
+	outline: 2px solid #fff
+
+.User-Username
+	margin-bottom: 4px
+	font-size: 1.2rem
+	font-weight: 500
+	color: #fff
+
+.User-Uid
+	font-size: 0.9rem
+	color: #929292
+
+.Header-MultiMenuButton
+	padding: 8px 18px
+	border-radius: 25px 0 25px 25px
+	box-shadow: 1px 4px 10px #00000010
+	color: #fff
+	background-color: $lsm__btn-accent-clr
+
+	&:not(:last-child)
+		margin-right: 20px
+
+.Header-MultiMenuButton>ion-icon
+	font-size: 1.2rem
