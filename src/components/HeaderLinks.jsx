@@ -5,7 +5,7 @@ import HeaderBtnWithSubMenu from './HeaderBtnWithSubMenu';
 const HeaderLinks = () => {
   return (
     <div className="Header-Links fl fl-row-cntr">
-      <HeaderLink to="/podcats" title="Podcasts" />
+      <HeaderLink to="/podcasts" title="Podcasts" />
       <HeaderLink to="/playlists" title="Playlists" />
       <HeaderLink to="/artists" title="Artists" />
       <HeaderLink to="/albums" title="Albums" />

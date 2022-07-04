@@ -4,6 +4,7 @@ const MultiMenuButton = ({type, title}) => {
   let _type = type;
 
   const renderMultiMenuButtonByType = type => {
+    // eslint-disable-next-line
     switch (type) {
       case 'lang':
         _type = 'language-outline';
