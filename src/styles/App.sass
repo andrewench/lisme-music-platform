@@ -22,11 +22,15 @@ table
 	border-spacing: 0
 html, body, .App
 	min-height: 100vh
+* > ion-icon
+	pointer-events: none
+
 body
 	background: linear-gradient(134.16deg, #151515 9.74%, #15101D 86.75%)
 
 // Variables
 $lsm__btn-accent-clr: #232029
+$lsm__accent-clr: #6FCCD3
 
 .fl
 	display: flex
@@ -63,7 +67,6 @@ $lsm__btn-accent-clr: #232029
 
 // Header Section
 .App-Header
-	position: fixed
 	padding: 0 100px
 	width: 100%
 	min-height: 100px
@@ -122,6 +125,9 @@ $lsm__btn-accent-clr: #232029
 .Header-MultiMenuButton>ion-icon
 	font-size: 1.2rem
 
+.AppContent
+	height: calc(100vh - 220px)
+
 .Page-Pt
 	padding: 0 20vw
 
@@ -139,3 +145,77 @@ $lsm__btn-accent-clr: #232029
 .UserPoster-Img
 	width: 100%
 	object-fit: cover
+
+.SideBar-Icon
+	width: 50px
+	height: 50px
+	border: none
+	border-radius: 50%
+	font-size: 1.3rem
+	color: $lsm__accent-clr
+	background-color: $lsm__btn-accent-clr
+
+.SideBar-Item
+	&:hover
+		cursor: pointer
+	
+	&:not(:last-child)
+		margin-bottom: 10px
+
+.AppFooter
+	position: fixed
+	left: 0
+	bottom: 0
+	width: 100vw
+	height: 120px
+
+.Footer-MusicPlayer
+	height: 100%
+
+.MusicPlayer-Controls
+	margin: auto auto 20px auto
+
+.MusicPlayer-ControlBtn
+	border: none
+	background-color: transparent
+
+	& > ion-icon
+		font-size: 2rem
+		color: #fff
+
+.MusicPlayer-SeekSlider
+	position: relative
+	width: 400px
+	height: 17px
+	margin: auto 14px
+
+.SeekSliderProgress
+	position: absolute
+	left: 0
+	top: 6px
+	height: 4px
+	border-radius: 2px
+
+.SeekSlider-Drag
+	width: 279px
+	z-index: 100
+	background-color: $lsm__accent-clr
+
+.SeekSlider-Track
+	width: 100%
+	z-index: 90
+	background-color: #221e28
+
+.TimeIndicator
+	font-size: 0.9rem
+	color: #929292
+
+.MusicPlayer-ControlBtn
+	width: 50px
+	height: 50px
+
+	&:hover
+		cursor: pointer
+
+	&:not(:last-child)
+		margin-right: 10px

@@ -1,7 +1,7 @@
 import React from 'react';
-import HeaderProfile from './HeaderProfile';
-import HeaderLinks from './HeaderLinks';
-import HeaderMultiMenu from './HeaderMultiMenu';
+import HeaderProfile from '../components/HeaderProfile';
+import HeaderLinks from '../components/HeaderLinks';
+import HeaderMultiMenu from '../components/HeaderMultiMenu';
 
 const AppHeader = () => {
   return (
