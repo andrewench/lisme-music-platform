@@ -5,18 +5,24 @@ import Podcasts from '../pages/Podcasts';
 import Playlists from '../pages/Playlists';
 import Artists from '../pages/Artists';
 import Albums from '../pages/Albums';
+import ProfileSideBar from '../components/ProfileSideBar';
 
 const AppContent = () => {
   return (
-    <div className="AppContent">
-      <Routes>
-        <Route exact path="/" element={<Home />}></Route>
-        <Route path="/home" element={<Home />}></Route>
-        <Route path="/podcasts" element={<Podcasts />}></Route>
-        <Route path="/playlists" element={<Playlists />}></Route>
-        <Route path="/artists" element={<Artists />}></Route>
-        <Route path="/albums" element={<Albums />}></Route>
-      </Routes>
+    <div className="AppContent Page-Pt fl">
+      <ProfileSideBar />
+
+      <div className="Content-Component">
+        <Routes>
+          <Route exact path="/" element={<Home />}></Route>
+          <Route path="/home" element={<Home />}></Route>
+          <Route path="/podcasts" element={<Podcasts />}></Route>
+          <Route path="/playlists" element={<Playlists />}></Route>
+          <Route path="/artists" element={<Artists />}></Route>
+          <Route path="/albums" element={<Albums />}></Route>
+        </Routes>
+      </div>
+
     </div>
   )
 }

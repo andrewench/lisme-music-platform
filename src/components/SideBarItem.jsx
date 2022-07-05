@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const SideBarItem = ({type}) => {
+const SideBarItem = ({type, title, isShowCounter}) => {
   let _type = type;
 
   const renderIconByType = type => {
@@ -36,8 +36,14 @@ const SideBarItem = ({type}) => {
 
   return (
     <li className="SideBar-Item">
-      <button className="SideBar-Icon">
-        <ion-icon name={_type}></ion-icon>
+      <button className="SideBar-Btn fl App-UI_rounded">
+        <div className="SideBar-LabelBox fl">
+          <ion-icon name={_type}></ion-icon>
+          <div className="SideBar-Label">{title}</div>
+        </div>
+        {isShowCounter &&
+          <div  className="SideBar-Counter">+1</div>
+        }
       </button>
     </li>
 )

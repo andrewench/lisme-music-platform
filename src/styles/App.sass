@@ -44,6 +44,10 @@ $lsm__accent-clr: #6FCCD3
 .fl-col-cntr
 	justify-content: center
 
+.fl-full-cntr
+	align-items: center
+	justify-content: center
+
 .fl-jstf-between
 	justify-content: space-between
 
@@ -65,8 +69,14 @@ $lsm__accent-clr: #6FCCD3
 	height: 18px
 	background-color: #c4c4c4
 
+.App-UI_rounded
+	border-radius: 25px 0 25px 25px
+
 // Header Section
 .App-Header
+	position: fixed
+	left: 0
+	top: 0
 	padding: 0 100px
 	width: 100%
 	min-height: 100px
@@ -88,12 +98,51 @@ $lsm__accent-clr: #6FCCD3
 
 	& > ion-icon
 		margin-top: 4px
+		transition: transform .3s
 
 	&:hover
 		cursor: pointer
 
+		& > ion-icon
+			transform: rotate(-180deg)
+
+.Header-MenuList
+	&:hover .MenuList-Drop
+		display: block
+		visibility: visible
+
 .MenuList-Label
 	margin-right: 4px
+
+.MenuList-Drop
+	min-width: 200px
+	display: none
+	visibility: hidden
+	position: absolute
+	padding: 15px 10px
+	border-radius: 6px
+	backdrop-filter: blur(6px)
+	box-shadow: 10px 30px 50px #00000070
+	background-color: #232029ce
+
+.Drop-Item
+	transition: background-color .18s
+	border-radius: 25px 0 25px 25px
+
+	&:hover
+		background-color: #6FCCD3
+
+.Drop-ItemBtn
+	width: 100%
+	padding: 12px 30px
+	border: none
+	font-size: 1rem
+	text-align: center
+	color: #f7f7f7
+	background-color: transparent
+
+	&:hover
+		cursor: pointer
 
 .User-AvatarBox
 	margin-right: 14px
@@ -126,14 +175,15 @@ $lsm__accent-clr: #6FCCD3
 	font-size: 1.2rem
 
 .AppContent
-	height: calc(100vh - 220px)
+	min-height: 100vh
 
 .Page-Pt
-	padding: 0 20vw
+	padding: 0 100px
 
 .Album-UserPoster
 	margin: auto
 	position: absolute
+	top: -50px
 	width: 60vw
 	z-index: -100
 
@@ -146,21 +196,68 @@ $lsm__accent-clr: #6FCCD3
 	width: 100%
 	object-fit: cover
 
-.SideBar-Icon
+.Profile-SideBar
+	position: fixed
+	width: 50px
+	height: 100%
+
+.SideBar-Btn
 	width: 50px
 	height: 50px
 	border: none
-	border-radius: 50%
 	font-size: 1.3rem
+	transition: width .3s
 	color: $lsm__accent-clr
 	background-color: $lsm__btn-accent-clr
 
-.SideBar-Item
+	&:not(:hover)
+		border-radius: 25px
+
 	&:hover
+		width: 200px
+		// padding: 14px 14px 0 20px
 		cursor: pointer
-	
+
+		& .SideBar-Label,
+		& > .SideBar-Counter
+			display: block
+			visibility: visible
+
+.SideBar-LabelBox
+	padding: 14px 0 0 14px
+
+	& > ion-icon
+		font-size: 1.3rem
+		margin-right: 20px
+
+	& > .SideBar-Label,
+	& > .SideBar-Counter
+		display: none
+		visibility: hidden
+
+.SideBar-Item	
 	&:not(:last-child)
 		margin-bottom: 10px
+
+.SideBar-Label
+	display: none
+	visibility: hidden
+	white-space: nowrap
+	font-size: 1rem
+	color: #fff
+
+.SideBar-Counter
+	display: none
+	visibility: hidden
+	min-width: 50px
+	height: 100%
+	padding: 14px
+	margin-left: auto
+	border-radius: 25px 0
+	font-weight: 500
+	font-size: 1rem
+	color: #fff
+	background-color: #2F2B38
 
 .AppFooter
 	position: fixed
@@ -219,3 +316,7 @@ $lsm__accent-clr: #6FCCD3
 
 	&:not(:last-child)
 		margin-right: 10px
+
+.Content-Component
+	margin-left: 50px
+	width: 100%
