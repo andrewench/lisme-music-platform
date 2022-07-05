@@ -1,12 +1,16 @@
 import React from 'react';
+import ListenersShowcase from '../components/ListenersShowcase';
 import MusicPlayer from '../components/MusicPlayer';
+import MusicPlayerProgressBar from '../components/MusicPlayerProgressBar';
 
 const AppFooter = () => {
   return (
-    <div className="AppFooter fl fl-jstf-between">
-      <div className="Footer-Listeners">1</div>
+    <div className="AppFooter Page-Pt fl fl-jstf-between">
+      <ListenersShowcase />
       <MusicPlayer />
-      <div className="MusicPlayer-Volume">3</div>
+      <div className="MusicPlayer-VolumeIndicator">
+        <MusicPlayerProgressBar className="ProgressBar-VolumeIndicator" />
+      </div>
     </div>
   )
 }

@@ -12,7 +12,7 @@ const Albums = () => {
       </div>
 
       {/* <div className="Album-Track">
-        <img src={AlbumTrack} alt="" draggable="false" />
+        <img src={AlbumTrack} alt="Got Me - Poylow, Nitto-Onna" draggable="false" />
       </div> */}
     </div>
   )

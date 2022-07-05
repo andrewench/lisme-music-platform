@@ -5,6 +5,7 @@ import MusicPlayerPrevTrackIcon from '../assets/icons/MusicPlayerPrevTrackIcon.s
 import MusicPlayerPlayTrackIcon from '../assets/icons/MusicPlayerPlayTrackIcon.svg';
 import MusicPlayerNextTrackIcon from '../assets/icons/MusicPlayerNextTrackIcon.svg';
 import MusicPlayerLoopTrackIcon from '../assets/icons/MusicPlayerLoopTrackIcon.svg';
+import MusicPlayerProgressBar from './MusicPlayerProgressBar';
 
 const MusicPlayer = () => {
   return (
@@ -28,10 +29,7 @@ const MusicPlayer = () => {
       </div>
       <div className="MusicPlayer-ProgressBar fl fl-row-cntr">
         <p className="MusicPlayer-TimeIndicator_action_prev TimeIndicator">2:05</p>
-        <div className="MusicPlayer-SeekSlider">
-          <div className="SeekSlider-Drag SeekSliderProgress"></div>
-          <div className="SeekSlider-Track SeekSliderProgress"></div>
-        </div>
+        <MusicPlayerProgressBar />
         <p className="MusicPlayer-TimeIndicator_action_next TimeIndicator">3:23</p>
       </div>
     </div>

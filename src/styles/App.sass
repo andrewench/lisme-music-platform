@@ -145,7 +145,11 @@ $lsm__accent-clr: #6FCCD3
 		cursor: pointer
 
 .User-AvatarBox
-	margin-right: 14px
+	&:not(.Listeners-User)
+		margin-right: 14px
+
+	&:hover
+		cursor: pointer
 
 .User-Avatar
 	border-radius: 50%
@@ -200,6 +204,7 @@ $lsm__accent-clr: #6FCCD3
 	position: fixed
 	width: 50px
 	height: 100%
+	gap: 10px
 
 .SideBar-Btn
 	width: 50px
@@ -215,7 +220,6 @@ $lsm__accent-clr: #6FCCD3
 
 	&:hover
 		width: 200px
-		// padding: 14px 14px 0 20px
 		cursor: pointer
 
 		& .SideBar-Label,
@@ -234,10 +238,6 @@ $lsm__accent-clr: #6FCCD3
 	& > .SideBar-Counter
 		display: none
 		visibility: hidden
-
-.SideBar-Item	
-	&:not(:last-child)
-		margin-bottom: 10px
 
 .SideBar-Label
 	display: none
@@ -270,6 +270,7 @@ $lsm__accent-clr: #6FCCD3
 	height: 100%
 
 .MusicPlayer-Controls
+	gap: 10px
 	margin: auto auto 20px auto
 
 .MusicPlayer-ControlBtn
@@ -280,25 +281,25 @@ $lsm__accent-clr: #6FCCD3
 		font-size: 2rem
 		color: #fff
 
-.MusicPlayer-SeekSlider
+.MusicPlayer-ProgressBar
 	position: relative
-	width: 400px
+	width: 500px
 	height: 17px
 	margin: auto 14px
 
-.SeekSliderProgress
+.ProgressBar-ProgressLine
 	position: absolute
 	left: 0
 	top: 6px
 	height: 4px
 	border-radius: 2px
 
-.SeekSlider-Drag
-	width: 279px
+.ProgressBar-Drag
+	width: 30%
 	z-index: 100
 	background-color: $lsm__accent-clr
 
-.SeekSlider-Track
+.ProgressBar-Track
 	width: 100%
 	z-index: 90
 	background-color: #221e28
@@ -314,9 +315,29 @@ $lsm__accent-clr: #6FCCD3
 	&:hover
 		cursor: pointer
 
-	&:not(:last-child)
-		margin-right: 10px
+.MusicPlayer-VolumeIndicator
+	width: 200px
+
+.ProgressBar-VolumeIndicator
+	margin-left: auto
+	margin-top: 70px
+	width: 100px
 
 .Content-Component
 	margin-left: 50px
 	width: 100%
+
+.Listeners-Label
+	margin-bottom: 14px
+	font-size: 1rem
+	gap: 8px
+	color: #929292
+
+	& > ion-icon
+		font-size: 1.1rem
+		padding-top: 2px
+		color: #78ff78
+
+.Listeners-User
+	&:not(:first-child)
+		margin-left: -8px
