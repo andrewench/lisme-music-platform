@@ -22,11 +22,25 @@ table
 	border-spacing: 0
 html, body, .App
 	min-height: 100vh
+	height: 100%
 * > ion-icon
 	pointer-events: none
 
 body
+	scroll-behavior: smooth
 	background: linear-gradient(134.16deg, #151515 9.74%, #15101D 86.75%)
+	background-attachment: fixed
+
+body::-webkit-scrollbar
+  width: 4px
+  height: 4px
+  background-color: #232029
+
+body::-webkit-scrollbar-thumb
+  background-color: #6FCCD350
+
+body::-webkit-scrollbar-thumb:hover
+  background-color: #6FCCD3
 
 // Variables
 $lsm__btn-accent-clr: #232029
@@ -51,6 +65,9 @@ $lsm__accent-clr: #6FCCD3
 .fl-jstf-between
 	justify-content: space-between
 
+.fl-jstf-around
+	justify-content: space-around
+
 .App-Link
 	text-decoration: none
 
@@ -72,6 +89,9 @@ $lsm__accent-clr: #6FCCD3
 .App-UI_rounded
 	border-radius: 25px 0 25px 25px
 
+.App-UI_always-on-top
+	z-index: 9000
+
 // Header Section
 .App-Header
 	position: fixed
@@ -81,6 +101,7 @@ $lsm__accent-clr: #6FCCD3
 	width: 100%
 	min-height: 100px
 	height: 100px
+	z-index: 9000
 	// backdrop-filter: blur(10px)
 	// background-color: #3b3b3b50
 
@@ -184,26 +205,128 @@ $lsm__accent-clr: #6FCCD3
 .Page-Pt
 	padding: 0 100px
 
-.Album-UserPoster
-	margin: auto
-	position: absolute
-	top: -50px
-	width: 60vw
+.App-Albums
+	padding: 0 50px
+	height: 100vh
+
+.Album-ArtistPoster
+	width: calc(100% - 50px)
+	height: 50vh
 	z-index: -100
 
-.UserPoster-Poster
-	position: absolute
-	left: 0
-	top: 0
+.Album-Soundtracks
+	margin-top: -100px
+	height: 100vh
+	clip-path: polygon(0 100px, 50% 0, 100% 0, 100% 100%, 0 100%)
+	background-color: #111
 
-.UserPoster-Img
+.Album-Track
+	position: absolute
+	left: calc(50% - 100px)
+	z-index: 2000
+	margin-top: -200px
+	width: 200px
+	height: 200px
+
+.Track-Img
+
+.Track-Metadata
+	margin-top: 14px
+	text-align: center
+
+.Track-Stats
+	margin-top: 14px
+
+.Track-AddLike
+	font-size: 1rem
+	border: none
+	border-radius: 6px
+	transition: background-color .3s
+	color: #929292
+	background-color: transparent
+
+	&:hover
+		cursor: pointer
+		background-color: #23202940
+
+	& > ion-icon[name=heart]
+		color: #6FCCD3
+
+.Track-ListeningCounter
+	font-size: 1rem
+	color: #929292
+
+.Metadata-Counter
+	padding: 10px 15px
+
+	& > ion-icon
+		font-size: 1.4rem
+		margin-right: 6px
+
+.Track-Title
+	margin: 60px 0 10px 18px
+	white-space: nowrap
+	text-shadow: 0 1px 2px rgba(0,0,0,.45)
+	color: #fff
+
+	& p
+		font-size: 1.25rem
+
+	& span
+		margin-right: 8px
+		text-transform: uppercase
+		font-size: 1.625rem
+		font-weight: 100
+
+.Album-AlbumName
+	font-size: 1.1rem
+	color: #929292
+
+	& > span
+		margin-right: 6px
+		color: #fff
+
+.ArtistPoster-Poster
+	z-index: -1000
+	height: 60vh
+
+.ArtistPoster-Img
 	width: 100%
+	height: 100%
 	object-fit: cover
+
+.Artist-PersonalData
+	width: 100%
+	margin: 30px 0 20px 20px
+
+.Artist-Username
+	margin-right: 10px
+	font-size: 1.5rem
+	font-weight: 500
+	color: #E4E4E4
+
+.Artist-Verified
+	padding-top: 6px
+	font-size: 1.5rem
+	color: $lsm__accent-clr
+
+.Artist-Follow
+	width: 140px
+	height: 40px
+	border: none
+	font-size: 1.125rem
+	color: #1b1b1b
+	background-color: #6FCCD3
+
+	&:hover
+		cursor: pointer
+
+.Profile-SideBarBox
+	width: 50px
+	height: 100vh
 
 .Profile-SideBar
 	position: fixed
-	width: 50px
-	height: 100%
 	gap: 10px
 
 .SideBar-Btn
@@ -258,6 +381,9 @@ $lsm__accent-clr: #6FCCD3
 	font-size: 1rem
 	color: #fff
 	background-color: #2F2B38
+
+.Listeners-Showcase
+	width: 200px
 
 .AppFooter
 	position: fixed
@@ -324,7 +450,7 @@ $lsm__accent-clr: #6FCCD3
 	width: 100px
 
 .Content-Component
-	margin-left: 50px
+	// margin-left: 50px
 	width: 100%
 
 .Listeners-Label

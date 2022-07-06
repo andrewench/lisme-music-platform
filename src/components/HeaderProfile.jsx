@@ -4,7 +4,7 @@ import UserInfoBar from './UserInfoBar';
 const HeaderProfile = () => {
   return (
     <div className="Header-Profile">
-      <UserInfoBar username="Andrew E." uid="101" />
+      <UserInfoBar username="Andrew Ench" uid="101" />
     </div>
   )
 }
