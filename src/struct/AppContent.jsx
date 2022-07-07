@@ -9,7 +9,7 @@ import ProfileSideBar from '../components/ProfileSideBar';
 
 const AppContent = () => {
   return (
-    <div className="AppContent Page-Pt fl">
+    <div className="AppContent ScrollBox Page-Pt fl">
       <ProfileSideBar />
 
       <div className="Content-Component">

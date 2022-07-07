@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import ElectronTitleBar from './components/ElectronTitleBar';
 import AppHeader from './struct/AppHeader';
 import AppContent from './struct/AppContent';
 import AppFooter from './struct/AppFooter';
@@ -9,6 +10,7 @@ const App = () => {
   return (
     <Router>
       <div className="App">
+        <ElectronTitleBar />
         <AppHeader />
         <AppContent />
         <AppFooter />

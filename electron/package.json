@@ -1,0 +1,17 @@
+{
+  "name": "lisme-electron-app",
+  "version": "1.0.0",
+  "description": "music platfrom for listening to music",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "andrewench",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^19.0.7"
+  },
+  "dependencies": {
+    "electron-builder": "^23.1.0"
+  }
+}
