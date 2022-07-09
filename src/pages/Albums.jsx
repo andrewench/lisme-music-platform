@@ -1,10 +1,11 @@
 import React from 'react';
 import UserPoster from '../assets/img/UserPoster.jpg';
 import AlbumTrack from '../assets/img/AlbumTrack.jpg';
+import SoundtrackItem from '../components/SoundtrackItem';
 
 const Albums = () => {
   return (
-    <div className="App-Albums">
+    <div className="App-Albums ScrollBox">
       <div className="Album-ArtistPoster">
         <div className="ArtistPoster-Poster">
           <img className="ArtistPoster-Img" src={UserPoster} alt="" draggable="false" />
@@ -28,7 +29,7 @@ const Albums = () => {
               </div>
             </div>
           </div>
-          <div className="Track-Metadata">
+          {/* <div className="Track-Metadata">
             <p className="Album-AlbumName"><span>Album:</span>Single</p>
           </div>
           <div className="Track-Stats fl fl-jstf-around">
@@ -40,9 +41,21 @@ const Albums = () => {
               <ion-icon name="headset-outline"></ion-icon>
               <span>12.430</span>
             </p>
-          </div>
+          </div> */}
         </div>
         <div className="Album-Soundtracks">
+          <SoundtrackItem />
+          <SoundtrackItem />
+          <SoundtrackItem />
+          <SoundtrackItem />
+          <SoundtrackItem />
+          <SoundtrackItem />
+          <SoundtrackItem />
+          <SoundtrackItem />
+          <SoundtrackItem />
+          <SoundtrackItem />
+          <SoundtrackItem />
+          <SoundtrackItem />
         </div>
       </div>
     </div>

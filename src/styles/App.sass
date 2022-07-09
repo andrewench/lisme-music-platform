@@ -32,7 +32,10 @@ body
 	scroll-behavior: smooth
 	background: linear-gradient(134.16deg, #151515 9.74%, #15101D 86.75%)
 	background-attachment: fixed
-	overflow: hidden
+	// overflow: hidden
+
+.ScrollBox
+	overflow: auto
 
 body::-webkit-scrollbar,
 .ScrollBox::-webkit-scrollbar
@@ -51,6 +54,11 @@ body::-webkit-scrollbar-thumb:hover,
 // Variables
 $lsm__btn-accent-clr: #232029
 $lsm__accent-clr: #6FCCD3
+
+// Constants
+$ELECTRON_TITLE_BAR_HEIGHT: 30px
+$HEADER_HEIGHT: 70px
+$SIDEBAR_WIDTH: 280px
 
 .fl
 	display: flex
@@ -87,7 +95,7 @@ $lsm__accent-clr: #6FCCD3
 		cursor: pointer
 
 .App-SprLine
-	margin-right: 40px
+	margin-right: 20px
 	width: 1px
 	height: 18px
 	background-color: #c4c4c4
@@ -98,10 +106,11 @@ $lsm__accent-clr: #6FCCD3
 .App-UI_always-on-top
 	z-index: 9000
 
+.UI-Btn
+	&:hover
+		cursor: pointer
+
 .AppElectron-TitleBar
-	position: fixed
-	left: 0
-	top: 0
 	width: 100%
 	height: 30px
 	z-index: 9999
@@ -111,10 +120,68 @@ $lsm__accent-clr: #6FCCD3
 		display: none
 		visibility: hidden
 
+.AppElectron-Menu
+	display: none
+	visibility: hidden
+	position: absolute
+	left: -30px
+	top: 50px
+	padding: 20px
+	border-radius: 6px
+	z-index: 9999
+	box-shadow: 10px 20px 50px #00000090
+	background-color: #232029
+
+	&::before
+		content: ''
+		position: absolute
+		left: 43px
+		top: -20px
+		display: block
+		border: 10px solid transparent
+		border-bottom: 10px solid #232029
+
+.TitleBar-ActionsBar.show
+	& .AppElectron-Menu
+		display: block
+		visibility: visible
+
+.ElectronMenu-Item
+	&:not(:last-child)
+		border-bottom: 1px solid #2e2a36
+
+.ElectronMenu-Btn
+	width: 100%
+	white-space: nowrap
+	border: none
+	border-radius: 4px
+	padding: 10px 20px
+	font-size: 1rem
+	text-align: left
+	color: #fff
+	background-color: transparent
+
+	& > ion-icon
+		margin-right: 10px
+
+	&:hover
+		background-color: #2e2a36
+
+.ElectronMenu-EnableAlwaysOnTop
+	&.EnableAlwaysOnTop_enabled
+		color: $lsm__accent-clr
+
+.App-Title
+	margin: 6px 0 0 10px
+	color: #919191
+
 .TitleBar-DragArea
 	width: 100%
 	height: 100%
 	-webkit-app-region: drag
+
+.TitleBar-ActionsBar
+	position: relative
 
 .ActionsBar-ActBtn
 	border: none
@@ -132,10 +199,26 @@ $lsm__accent-clr: #6FCCD3
 	&:focus
 		outline: none
 
-.ActionsBar-Close
+.ActionsBar-ActBtn
 	& > ion-icon
 		transition: transform .3s
 
+.ActionsBar-FullScreen
+	&:hover
+		& > ion-icon
+			transform: rotate(45deg)
+
+.ActionsBar-Minimize
+	&:hover
+		& > ion-icon
+			transform: translateY(3px)
+
+.ActionsBar-Maximize
+	&:hover
+		& > ion-icon
+			transform: translateY(-3px)
+
+.ActionsBar-Close
 	&:hover
 		& > ion-icon
 			transform: rotate(90deg)
@@ -143,36 +226,75 @@ $lsm__accent-clr: #6FCCD3
 
 body[data-fscrn=false]
 	& .App
-		margin-top: 30px
+		// margin-top: 30px
 body[data-fscrn=true]
 	& .App
-		margin: 0
+		// margin: 0
+
+body[data-fscrn=false] .DynamicHeightSize
+	// height: 100vh
+
+body[data-fscrn=true] .DynamicHeightSize
+	// height: calc(100vh - $ELECTRON_TITLE_BAR_HEIGHT)
+
+.App-Preloader
+	position: fixed
+	left: 0
+	top: $ELECTRON_TITLE_BAR_HEIGHT
+	width: 100vw
+	height: calc(100vh - #{$ELECTRON_TITLE_BAR_HEIGHT})
+	z-index: 9990
+	background-color: #232029
+
+	&::before
+		content: ''
+		display: block
+		width: 50px
+		height: 50px
+		border-radius: 50%
+		border: 4px solid #fff
+		border-right: 4px solid transparent
+		animation: load 1s linear infinite
+
+@keyframes load
+	to
+		transform: rotate(360deg)
+
+@keyframes hide
+	to
+		opacity: 0
 
 // Header Section
 .App-Header
 	position: fixed
-	left: 0
-	padding: 0 100px
-	width: 100%
-	min-height: 100px
-	height: 100px
-	z-index: 9000
+	padding: 0 30px
+	height: $HEADER_HEIGHT
+	// z-index: 9000
+	background-color: #eeeeee10;
+	backdrop-filter: blur(4px)
+	box-shadow: 0 0 30px #00000010
+
+body[data-side-mini=false] .App-Header
+	width: calc(100vw - #{$SIDEBAR_WIDTH})
+
+body[data-side-mini=true] .App-Header
+	width: calc(100vw - 60px)
 
 body[data-fscrn=false]
 	& .App-Header
-		top: 30px
+		// top: 30px
 body[data-fscrn=true]
 	& .App-Header
-		top: 0
+		// top: 0
 
 .Header-Link
-	font-size: 1.2rem
+	font-size: 1.125rem
 	letter-spacing: 0.02em
 	text-shadow: 0 1px 2px rgba(0,0,0,.45)
 	color: #fff
 
 .Header-Links > .Header-Link:not(:last-child)
-	margin-right: 40px
+	margin-right: 20px
 
 .Header-MenuList
 	background-color: transparent
@@ -225,12 +347,28 @@ body[data-fscrn=true]
 	&:hover
 		cursor: pointer
 
-.User-AvatarBox
-	&:not(.Listeners-User)
-		margin-right: 14px
+body[data-side-mini=true] .User-PersonalData
+	display: none
+	visibility: hidden
 
+.User-AvatarBox
 	&:hover
 		cursor: pointer
+
+	& > img
+		width: 100%
+		height: 100%
+		object-fit: cover
+
+body[data-side-mini=true]
+	& .User-AvatarBox
+		width: 40px
+		height: 40px
+
+body[data-side-mini=false]
+	& .User-AvatarBox
+		&:not(.Listeners-User)
+			margin-right: 14px
 
 .User-Avatar
 	border-radius: 50%
@@ -254,38 +392,44 @@ body[data-fscrn=true]
 	background-color: $lsm__btn-accent-clr
 
 	&:not(:last-child)
-		margin-right: 20px
+		margin-right: 14px
+
+.MultiMenu-Lang
+	gap: 8px
 
 .Header-MultiMenuButton>ion-icon
 	font-size: 1.2rem
 
 .AppContent
 	overflow: auto
-	min-height: calc(100vh)
+	// min-height: calc(100v)
+	height: 100%
 
 .Page-Pt
-	padding: 0 100px
+	padding: 0 30px
 
 .App-Albums
-	padding: 0 50px
-	height: 100vh
+	height: calc(100vh - #{$ELECTRON_TITLE_BAR_HEIGHT})
 
 .Album-ArtistPoster
-	width: calc(100% - 50px)
-	height: 50vh
+	width: 100%
+	min-height: 100%
 	z-index: -100
 
 .Album-Soundtracks
-	margin-top: -100px
-	height: 100vh
-	clip-path: polygon(0 100px, 50% 0, 100% 0, 100% 100%, 0 100%)
-	background-color: #111
+	// height: 100vh
+	padding: 100px 50px
+
+.Soundtrack-Item
+	height: 50px
+	border-radius: 4px
+	background-color: #232029
+
+	&:not(:last-child)
+		margin-bottom: 10px
 
 .Album-Track
-	position: absolute
-	left: calc(50% - 100px)
-	z-index: 2000
-	margin-top: -200px
+	margin: -100px 0 0 10%
 	width: 200px
 	height: 200px
 
@@ -348,8 +492,19 @@ body[data-fscrn=true]
 		color: #fff
 
 .ArtistPoster-Poster
+	position: relative
 	z-index: -1000
 	height: 60vh
+
+	&:after
+		content: ''
+		display: block
+		position: absolute
+		left: 0
+		top: 70%
+		width: 100%
+		height: 30%
+		background: linear-gradient(0deg, #00000090, transparent)
 
 .ArtistPoster-Img
 	width: 100%
@@ -383,40 +538,62 @@ body[data-fscrn=true]
 		cursor: pointer
 
 .Profile-SideBarBox
-	width: 50px
-	height: 100vh
+	position: relative
+	padding-top: 16px
+	background-color: #1a181e
+
+body[data-fscrn=false]
+	& .Profile-SideBarBox
+		height: calc(100vh - #{$ELECTRON_TITLE_BAR_HEIGHT}
+
+body[data-fscrn=true]
+	& .Profile-SideBarBox
+		height: 100vh
+
+.Profile-SideBarBox:not(.SideBar_size_mini)
+	min-width: $SIDEBAR_WIDTH
+
+.Profile-SideBarBox.SideBar_size_mini
+	width: 60px
 
 .Profile-SideBar
-	position: fixed
-	gap: 10px
+	margin-top: 40px
+	gap: 14px
 
 .SideBar-Btn
-	width: 50px
-	height: 50px
+	// width: 100%
+	min-width: 40px
+	height: 40px
+	// min-height: 40px
+	// padding-left: 20px
 	border: none
+	border-radius: 25px
 	font-size: 1.3rem
 	transition: width .3s
 	color: $lsm__accent-clr
 	background-color: $lsm__btn-accent-clr
 
 	&:not(:hover)
-		border-radius: 25px
+		// border-radius: 25px
 
 	&:hover
-		width: 200px
+		// width: 200px
 		cursor: pointer
 
 		& .SideBar-Label,
 		& > .SideBar-Counter
-			display: block
-			visibility: visible
+			// display: block
+			// visibility: visible
+
+	&:focus
+		outline: 3px solid $lsm__accent-clr
 
 .SideBar-LabelBox
-	padding: 14px 0 0 14px
+	padding: 0 0 0 10px
 
 	& > ion-icon
 		font-size: 1.3rem
-		margin-right: 20px
+		margin-right: 10px
 
 	& > .SideBar-Label,
 	& > .SideBar-Counter
@@ -424,8 +601,8 @@ body[data-fscrn=true]
 		visibility: hidden
 
 .SideBar-Label
-	display: none
-	visibility: hidden
+	// display: none
+	// visibility: hidden
 	white-space: nowrap
 	font-size: 1rem
 	color: #fff
@@ -442,6 +619,28 @@ body[data-fscrn=true]
 	font-size: 1rem
 	color: #fff
 	background-color: #2F2B38
+
+.SideBar-ToogleSideBar
+	position: absolute
+	bottom: 20px
+	min-width: 30px
+	height: 30px
+	border: none
+	font-size: 1.6rem
+	color: #2F2B38
+	background-color: transparent
+
+	& > ion-icon
+		transition: transform .3s
+
+body[data-side-mini=false]
+	.SideBar-ToogleSideBar
+		right: 20px
+
+body[data-side-mini=false]
+	& .SideBar-ToogleSideBar
+		& > ion-icon
+			transform: rotate(180deg)
 
 .Listeners-Showcase
 	width: 200px

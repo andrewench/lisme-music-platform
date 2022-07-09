@@ -36,7 +36,7 @@ const SideBarItem = ({type, title, isShowCounter}) => {
 
   return (
     <li className="SideBar-Item">
-      <button className="SideBar-Btn fl App-UI_rounded">
+      <button className="SideBar-Btn fl fl-row-cntr">
         <div className="SideBar-LabelBox fl">
           <ion-icon name={_type}></ion-icon>
           <div className="SideBar-Label">{title}</div>

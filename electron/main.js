@@ -4,8 +4,13 @@ let mainWin;
 
 const createWindow = () => {
   mainWin = new BrowserWindow({
-    width: 1280,
-    height: 720,
+    minWidth: 1024,
+    minHeight: 640,
+    // width: 1280,
+    // height: 720,
+    width: 1024,
+    height: 640,
+    center: true,
     frame: false,
     webPreferences: {
       nodeIntegration: true,
@@ -37,7 +42,6 @@ const createWindow = () => {
 
   tray.setContextMenu(Menu.buildFromTemplate(templateMenu));
   tray.on('double-click', () => mainWin.show());
-
 }
 
 app.whenReady().then(() => {
@@ -53,6 +57,20 @@ app.whenReady().then(() => {
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
+  }
+});
+
+ipcMain.on('win-always-on-top', () => {
+  if (mainWin.isAlwaysOnTop()) {
+    mainWin.setAlwaysOnTop(false);
+    mainWin.webContents.send('always-on-top-event', {
+      isAlwaysOnTop: false
+    });
+  } else {
+    mainWin.setAlwaysOnTop(true);
+    mainWin.webContents.send('always-on-top-event', {
+      isAlwaysOnTop: true
+    });
   }
 });
 

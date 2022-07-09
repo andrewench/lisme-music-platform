@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import AppHeader from './AppHeader';
 import Home from '../pages/Home';
 import Podcasts from '../pages/Podcasts';
 import Playlists from '../pages/Playlists';
@@ -9,10 +10,11 @@ import ProfileSideBar from '../components/ProfileSideBar';
 
 const AppContent = () => {
   return (
-    <div className="AppContent ScrollBox Page-Pt fl">
+    <div className="AppContent fl">
       <ProfileSideBar />
 
       <div className="Content-Component">
+        <AppHeader />
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
           <Route path="/home" element={<Home />}></Route>

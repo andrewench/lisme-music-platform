@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import AppPreloader from './components/AppPreloader';
 import ElectronTitleBar from './components/ElectronTitleBar';
-import AppHeader from './struct/AppHeader';
 import AppContent from './struct/AppContent';
 import AppFooter from './struct/AppFooter';
 import './styles/App.sass';
@@ -11,9 +11,9 @@ const App = () => {
     <Router>
       <div className="App">
         <ElectronTitleBar />
-        <AppHeader />
+        <AppPreloader />
         <AppContent />
-        <AppFooter />
+        {/* <AppFooter /> */}
       </div>
     </Router>
   )
